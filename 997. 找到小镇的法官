@@ -1,6 +1,7 @@
 class Solution:
     def findJudge(self, N: int, trust: List[List[int]]) -> int:
         #0行，0列用来记录入度，出度。
+        #出度为0，并且入度为N-1。入度是箭头指向自己，很容易记错。
         mats = [[0 for _ in range(N+1)]for __ in range(N+1)]
 
         for i in range(len(trust)):
