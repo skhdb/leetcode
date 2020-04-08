@@ -1,0 +1,24 @@
+class Solution:
+    def findJudge(self, N: int, trust: List[List[int]]) -> int:
+        #0行，0列用来记录入度，出度。
+        mats = [[0 for _ in range(N+1)]for __ in range(N+1)]
+
+        for i in range(len(trust)):
+            m = trust[i][0]
+            n = trust[i][1]
+            mats[m][n] = 1
+            mats[m][0] +=1
+            mats[0][n] +=1
+        
+        #print(mats)
+        
+        res = []
+        for j in range(1,N+1):
+            if mats[0][j] == N-1 and mats[j][0] == 0:
+                res.append(j)
+        
+        if len(res)==1:
+            return res[0]
+        else:
+            return -1
+
